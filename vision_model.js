@@ -44,14 +44,14 @@ async function main() {
         {
           type: "image_url",
           image_url: {
-            url: 'pexels.jpg',
+            url: 'https://flatsiedatsie.github.io/web_llm_vision/pexels.jpg',
           },
         },
         {
           type: "image_url",
           image_url: {
             //url: proxyUrl + url_https_sea,
-			url: 'pexels2.jpg',
+			url: 'https://flatsiedatsie.github.io/web_llm_vision/pexels2.jpg',
           },
         },
       ],
@@ -89,7 +89,7 @@ async function main() {
       {
         type: "image_url",
         //image_url: { url: proxyUrl + url_https_tree },
-		image_url: { url: 'pexels3.jpg' },
+		image_url: { url: 'https://flatsiedatsie.github.io/web_llm_vision/pexels3.jpg' },
       },
     ],
   });
