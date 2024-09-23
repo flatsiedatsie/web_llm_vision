@@ -4,11 +4,13 @@ export function getImageDataFromURL(url) {
     const img = new Image();
     img.crossOrigin = "anonymous"; // Important for CORS
     img.onload = () => {
+		console.log("image loaded");
       const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d")!;
+      const ctx = canvas.getContext("2d");
       canvas.width = img.width;
       canvas.height = img.height;
-      ctx.drawImage(img as CanvasImageSource, 0, 0);
+      //ctx.drawImage(img as CanvasImageSource, 0, 0);
+	  ctx.drawImage(img, 0, 0);
 
       const imageData = ctx.getImageData(0, 0, img.width, img.height);
       resolve(imageData);
@@ -26,7 +28,7 @@ export async function imageURLToBase64(url) {
   canvas.width = imageData.width;
   canvas.height = imageData.height;
 
-  ctx!.putImageData(imageData, 0, 0);
+  ctx.putImageData(imageData, 0, 0);
 
   return canvas.toDataURL();
 }

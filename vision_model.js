@@ -1,4 +1,5 @@
 import * as webllm from "./web_llm_lib.js";
+//import * as webllm from "https://esm.run/@mlc-ai/web-llm";
 import { imageURLToBase64 } from "./utils.js";
 
 function setLabel(id, text) {
@@ -17,8 +18,8 @@ const url_https_sea =
 
 async function main() {
   // can feed request with either base64 or http url
-  const url_base64_street = await imageURLToBase64(proxyUrl + url_https_street);
-
+  //const url_base64_street = await imageURLToBase64(proxyUrl + url_https_street);
+  const url_base64_street = await imageURLToBase64('./pexels.jpg');
   const initProgressCallback = (report) => {
     setLabel("init-label", report.text);
   };
@@ -43,13 +44,14 @@ async function main() {
         {
           type: "image_url",
           image_url: {
-            url: url_base64_street,
+            url: 'pexels.jpg',
           },
         },
         {
           type: "image_url",
           image_url: {
-            url: proxyUrl + url_https_sea,
+            //url: proxyUrl + url_https_sea,
+			url: 'pexels2.jpg',
           },
         },
       ],
@@ -61,9 +63,9 @@ async function main() {
   };
   const reply0 = await engine.chat.completions.create(request0);
   const replyMessage0 = await engine.getMessage();
-  console.log(reply0);
-  console.log(replyMessage0);
-  console.log(reply0.usage);
+  console.log("reply0: ", reply0);
+  console.log("replyMessage0: ", replyMessage0);
+  console.log("reply0.usage: ", reply0.usage);
 
   // 2. A follow up text-only question
   messages.push({ role: "assistant", content: replyMessage0 });
@@ -74,9 +76,9 @@ async function main() {
   };
   const reply1 = await engine.chat.completions.create(request1);
   const replyMessage1 = await engine.getMessage();
-  console.log(reply1);
-  console.log(replyMessage1);
-  console.log(reply1.usage);
+  console.log("reply1: ", reply1);
+  console.log("replyMessage1: ", replyMessage1);
+  console.log("reply1.usage: ", reply1.usage);
 
   // 3. A follow up multi-image question
   messages.push({ role: "assistant", content: replyMessage1 });
@@ -86,7 +88,8 @@ async function main() {
       { type: "text", text: "What about this image? Answer concisely." },
       {
         type: "image_url",
-        image_url: { url: proxyUrl + url_https_tree },
+        //image_url: { url: proxyUrl + url_https_tree },
+		image_url: { url: 'pexels3.jpg' },
       },
     ],
   });
@@ -96,9 +99,9 @@ async function main() {
   };
   const reply2 = await engine.chat.completions.create(request2);
   const replyMessage2 = await engine.getMessage();
-  console.log(reply2);
-  console.log(replyMessage2);
-  console.log(reply2.usage);
+  console.log("reply2: ", reply2);
+  console.log("replyMessage2: ", replyMessage2);
+  console.log("reply2.usage: ", reply2.usage);
 }
 
 main();
