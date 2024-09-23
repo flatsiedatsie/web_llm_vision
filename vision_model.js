@@ -67,6 +67,8 @@ async function main() {
   console.log("replyMessage0: ", replyMessage0);
   console.log("reply0.usage: ", reply0.usage);
 
+  document.getElementById('reply1').textContent = replyMessage0;
+
   // 2. A follow up text-only question
   messages.push({ role: "assistant", content: replyMessage0 });
   messages.push({ role: "user", content: "What is special about each image?" });
@@ -79,6 +81,8 @@ async function main() {
   console.log("reply1: ", reply1);
   console.log("replyMessage1: ", replyMessage1);
   console.log("reply1.usage: ", reply1.usage);
+  document.getElementById('reply2').textContent = replyMessage1;
+
 
   // 3. A follow up multi-image question
   messages.push({ role: "assistant", content: replyMessage1 });
@@ -102,6 +106,7 @@ async function main() {
   console.log("reply2: ", reply2);
   console.log("replyMessage2: ", replyMessage2);
   console.log("reply2.usage: ", reply2.usage);
+  document.getElementById('reply3').textContent = replyMessage2;
 }
 
 main();
